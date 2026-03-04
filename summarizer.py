@@ -9,7 +9,7 @@ STOPWORDS = {
 
 def split_sentences(text: str):
     text = re.sub(r"\s+", " ", text).strip()
-    # Basit cümle bölme
+    
     sentences = re.split(r"(?<=[.!?])\s+", text)
     return [s.strip() for s in sentences if len(s.strip()) > 20]
 
@@ -37,7 +37,7 @@ def summarize_text(text: str, n_sentences: int = 4) -> str:
         scores.append((score, s))
 
     top = sorted(scores, key=lambda x: x[0], reverse=True)[:n_sentences]
-    # Orijinal sırayı koru (daha doğal görünür)
+    
     top_sentences = [s for _, s in top]
     ordered = [s for s in sentences if s in top_sentences]
 
